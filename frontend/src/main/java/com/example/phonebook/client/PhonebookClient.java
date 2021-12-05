@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(value = "phonebook-api", url = "${endpoints.phonebook-api}")
 public interface PhonebookClient {
 
+    @GetMapping(value = "/status",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    List<UserEntity> getStatus();
+
     @GetMapping(value = "/user/list",
             produces = MediaType.APPLICATION_JSON_VALUE)
     List<UserEntity> getAllUsers();

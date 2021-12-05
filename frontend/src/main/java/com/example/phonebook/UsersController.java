@@ -28,6 +28,14 @@ public class UsersController {
 		return "user.html";
 	}
 
+	@GetMapping("/status")
+	public String getStatus(Model model) {
+		List<UserEntity> users = phonebookClient.getStatus();
+		model.addAttribute("users", users);
+		model.addAttribute("userEntity",new UserEntity());
+		return "user.html";
+	}
+
 	@PostMapping("/user/add")
 	public String addUser(@ModelAttribute UserEntity userEntity, Model model) {
 		UserOperation userOperation = phonebookClient.postUser(userEntity);
