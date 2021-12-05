@@ -24,6 +24,11 @@ public class UsersController {
 
     private final UserService userService;
 
+    @GetMapping("/status")
+    public ResponseEntity<List<UserEntity>> status() {
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+
     @GetMapping("/user/list")
     public ResponseEntity<List<UserEntity>> listUsers() {
         return ResponseEntity.ok(userService.getAllUsers());

@@ -1,7 +1,6 @@
 package az.phonebook.backend.handlers;
 
 import az.phonebook.backend.dto.feign.response.ErrorResponseDto;
-import az.phonebook.backend.dto.feign.response.ErrorResponseDtoMkr;
 import az.phonebook.backend.exceptions.AuthorizationException;
 import az.phonebook.backend.exceptions.FailedToGetSuccessfulResponseException;
 import az.phonebook.backend.exceptions.RecordNotFoundException;
@@ -42,20 +41,13 @@ public class FeignCustomErrorHandler implements ErrorDecoder {
         try {
             if (response.body() != null) {
                 ErrorResponseDto errorDto;
-                ErrorResponseDtoMkr errorResponseDtoMkr;
-                if (response.request().url().contains("mkr-datagate-ms")) {
-                    errorResponseDtoMkr = objectMapper.readValue(response.body().asReader(), ErrorResponseDtoMkr.class);
-                    if (errorResponseDtoMkr != null) {
-                        return errorResponseDtoMkr.getMessage();
-                    }
-                } else {
-                    errorDto = objectMapper.readValue(response.body().asReader(), ErrorResponseDto.class);
-                    if (errorDto != null) {
+                errorDto = objectMapper.readValue(response.body().asReader(), ErrorResponseDto.class);
+                if (errorDto != null) {
                         return errorDto.getErrorDetail();
                     }
                 }
             }
-        } catch (IOException e) {
+        catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         }
         return null;

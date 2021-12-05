@@ -1,7 +1,5 @@
 server:
   port: 8080
-  servlet:
-    context-path: /phonebook-backend
 spring:
   application:
     name: phonebook-backend
@@ -49,7 +47,7 @@ feign:
     enabled: true
 management:
   server:
-    port: ${MANAGEMENT_SERVER_PORT:8083}
+    port: ${MANAGEMENT_SERVER_PORT:8081}
   endpoints:
     web:
       exposure:

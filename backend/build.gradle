@@ -7,8 +7,8 @@ buildscript {
 
 
 plugins {
-    id 'org.springframework.boot' version "$springBootVersion"
-    id 'io.spring.dependency-management' version "$springDependencyVersion"
+    id 'org.springframework.boot' version "2.3.4.RELEASE"
+    id 'io.spring.dependency-management' version "1.0.10.RELEASE"
     id 'java'
 }
 
@@ -40,41 +40,17 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation:$validationVersion"
     implementation "net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion"
     implementation 'ch.qos.logback:logback-classic'
-    implementation "junit:junit:$junitVersion"
-
     // Lib for creating mapper classes at compile time
-    implementation group: 'org.mapstruct', name: 'mapstruct', version: "$mapstructVersion"
     implementation 'org.jetbrains:annotations:19.0.0'
-    annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: "$mapstructProcessorVersion"
-    implementation "io.springfox:springfox-swagger-ui:$swaggerVersion"
-    implementation "io.springfox:springfox-swagger2:$swaggerVersion"
-
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: "$jaxbVersion"
-
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
-
-
     implementation group: 'org.modelmapper', name: 'modelmapper', version: "$modelMapper"
-
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: "$starterSleuthVersion"
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: "$starterOpenFeign"
-
     implementation "org.apache.commons:commons-lang3:${apacheCommonVersion}"
-
     implementation "io.github.openfeign:feign-okhttp:$okHttpVersion"
     implementation "io.github.openfeign:feign-gson:$gsonVersion"
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-
-    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: "$powerMockVersion"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
-
 
 }
 
