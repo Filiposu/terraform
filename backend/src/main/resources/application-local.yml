@@ -1,0 +1,8 @@
+server:
+  port: 8100
+spring:
+  datasource:
+    url: ${FLEXCUBE_DB_URL:jdbc:oracle:thin:@172.31.0.50:1521/FCJ12PROD}
+    username: ${FLEXCUBE_DB_USERNAME:msuser}
+    password: ${FLEXCUBE_DB_PASSWORD:!zR3t66gDk2!}
+

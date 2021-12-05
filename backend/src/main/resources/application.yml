@@ -1,0 +1,66 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /phonebook-backend
+spring:
+  application:
+    name: phonebook-backend
+  main:
+    banner-mode: off
+  sleuth:
+    sampler:
+      probability: 1.0
+    log:
+      slf4j:
+        whitelisted-mdc-keys: principal
+        enabled: true
+    baggage-keys: principal
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://phonebookdb.cstgoqlxr3e3.eu-west-1.rds.amazonaws.com:3306/phonebookdb}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:password}
+    #    tomcat:
+    #      test-while-idle: true
+    #      validation-query: 1
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        default_schema: ${FLEXCUBE_DB_SCHEMA:phonebookdb}
+    hibernate:
+      ddl-auto: update
+#      naming:
+#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    show-sql: true
+#    database-platform: org.hibernate.dialect.MySQL5Dialect
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 20000
+        readTimeout: 120000
+        loggerLevel: full
+        decode404: false
+  httpclient:
+    enabled: false
+    disable-ssl-validation: true
+  okhttp:
+    enabled: true
+management:
+  server:
+    port: ${MANAGEMENT_SERVER_PORT:8083}
+  endpoints:
+    web:
+      exposure:
+        include: info, health
+    enabled-by-default: false
+  endpoint:
+    health:
+      show-details: always
+      enabled: true
+    metrics:
+      enabled: false
+    info:
+      enabled: true
+
