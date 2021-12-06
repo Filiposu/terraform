@@ -43,7 +43,7 @@ resource "aws_lb_listener_rule" "my_app2" {
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.load-balancer-target-group2.arn
+    target_group_arn = aws_lb_target_group.frontend-target-group.arn
   }
 
   condition {
