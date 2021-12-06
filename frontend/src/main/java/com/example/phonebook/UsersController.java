@@ -26,7 +26,7 @@ public class UsersController {
 	public String listUsers(Model model) {
 		List<UserEntity> users = phonebookClient.getAllUsers("myapp.example.com");
 		try{
-			model.addAttribute("hostname",Inet4Address.getLocalHost().getHostName());
+			model.addAttribute("hostname",Inet4Address.getLocalHost().getHostAddress());
 		}
 		catch (Exception e){
 			System.out.println(e.getMessage());

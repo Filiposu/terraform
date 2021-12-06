@@ -45,8 +45,8 @@ resource "aws_lb_listener_rule" "my_app1" {
   }
 
   condition {
-    host_header {
-      values = ["myapp.example.com"]
+    path_pattern {
+      values = ["/*"]
     }
   }
 }

@@ -45,3 +45,4 @@ resource "aws_autoscaling_policy" "scale_app2" {
   }
   depends_on = ["aws_lb_target_group.load-balancer-target-group2"]
 }
+
