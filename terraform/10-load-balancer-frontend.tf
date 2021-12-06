@@ -53,10 +53,3 @@ resource "aws_lb_listener_rule" "my_app2" {
   }
 
 }
-
-resource "aws_lb_target_group" "load-balancer-target-group2" {
-  vpc_id   = aws_vpc.production-vpc.id
-  name     = "target-group-frontend"
-  port     = 80
-  protocol = "HTTP"
-}

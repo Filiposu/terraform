@@ -24,6 +24,9 @@ resource "aws_autoscaling_group" "autoscaling-group-backend" {
     propagate_at_launch = true
     value               = "auto-scaling-app"
   }
+
+  depends_on = ["aws_lb_target_group.load-balancer-target-group1"]
+
 }
 
 resource "aws_autoscaling_policy" "scale_app1" {
@@ -40,4 +43,7 @@ resource "aws_autoscaling_policy" "scale_app1" {
 
     target_value = 30
   }
+
+  depends_on = ["aws_lb_target_group.load-balancer-target-group1"]
+
 }

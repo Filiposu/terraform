@@ -36,19 +36,19 @@ public class UsersController {
 		return "user.html";
 	}
 
-	@GetMapping("/status")
-	public String getStatus(Model model) {
-		List<UserEntity> users = phonebookClient.getStatus("myapp.example.com");
-		try{
-			model.addAttribute("hostname",Inet4Address.getLocalHost().getHostName());
-		}
-		catch (Exception e){
-			System.out.println(e.getMessage());
-		}
-		model.addAttribute("users", users);
-		model.addAttribute("userEntity",new UserEntity());
-		return "user.html";
-	}
+//	@GetMapping("/status")
+//	public String getStatus(Model model) {
+//		List<UserEntity> users = phonebookClient.getStatus("myapp.example.com");
+//		try{
+//			model.addAttribute("hostname",Inet4Address.getLocalHost().getHostName());
+//		}
+//		catch (Exception e){
+//			System.out.println(e.getMessage());
+//		}
+//		model.addAttribute("users", users);
+//		model.addAttribute("userEntity",new UserEntity());
+//		return "user.html";
+//	}
 
 	@PostMapping("/user/add")
 	public String addUser(@ModelAttribute UserEntity userEntity, Model model) {
