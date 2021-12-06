@@ -4,7 +4,7 @@ resource "aws_autoscaling_group" "autoscaling-group-frontend" {
   vpc_zone_identifier = [aws_subnet.public-subnet-1.id, aws_subnet.public-subnet-2.id]
   desired_capacity    = 2
   max_size            = 10
-  min_size            = 1
+  min_size            = 2
 
   target_group_arns = [
     aws_lb_target_group.load-balancer-target-group2.arn
