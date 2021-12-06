@@ -18,8 +18,8 @@ resource "aws_db_instance" "mysql" {
   engine_version         = "5.7"
   instance_class         = "db.t2.micro"
   name                   = "testDB"
-  username               = "root"
-  password               = "password"
+  username               =
+  password               =
   parameter_group_name   = "default.mysql5.7"
   skip_final_snapshot    = true
   db_subnet_group_name   = "database-subnet-group"
