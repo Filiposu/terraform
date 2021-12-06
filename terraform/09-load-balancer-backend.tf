@@ -18,6 +18,7 @@ resource "aws_lb" "auto-load-balancer-backend" {
     Name        = "auto-load-balancer-backend"
     Environment = "production"
   }
+  depends_on = [aws_db_instance.mysql]
 }
 
 resource "aws_lb_listener" "http1" {

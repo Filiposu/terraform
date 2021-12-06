@@ -22,7 +22,7 @@ public class UsersController {
 
 	@GetMapping("/")
 	public String listUsers(Model model) {
-		List<UserEntity> users = phonebookClient.getAllUsers();
+		List<UserEntity> users = phonebookClient.getAllUsers("myapp.example.com");
 		model.addAttribute("users", users);
 		model.addAttribute("userEntity",new UserEntity());
 		return "user.html";
@@ -30,7 +30,7 @@ public class UsersController {
 
 	@GetMapping("/status")
 	public String getStatus(Model model) {
-		List<UserEntity> users = phonebookClient.getStatus();
+		List<UserEntity> users = phonebookClient.getStatus("myapp.example.com");
 		model.addAttribute("users", users);
 		model.addAttribute("userEntity",new UserEntity());
 		return "user.html";
@@ -38,21 +38,21 @@ public class UsersController {
 
 	@PostMapping("/user/add")
 	public String addUser(@ModelAttribute UserEntity userEntity, Model model) {
-		UserOperation userOperation = phonebookClient.postUser(userEntity);
+		UserOperation userOperation = phonebookClient.postUser(userEntity,"myapp.example.com");
 		model.addAttribute("operation", userOperation);
 		return "operation";
 	}
 
 	@PostMapping("/user/edit")
 	public String editUser(@ModelAttribute UserEntity userEntity, Model model) {
-		UserOperation userOperation = phonebookClient.editUser(userEntity);
+		UserOperation userOperation = phonebookClient.editUser(userEntity,"myapp.example.com");
 		model.addAttribute("operation", userOperation);
 		return "operation";
 	}
 
 	@PostMapping("/user/delete")
 	public String deleteUser(@ModelAttribute UserEntity userEntity, Model model) {
-		UserOperation userOperation = phonebookClient.deleteUser(userEntity);
+		UserOperation userOperation = phonebookClient.deleteUser(userEntity,"myapp.example.com");
 		model.addAttribute("operation", userOperation);
 		return "operation";
 	}

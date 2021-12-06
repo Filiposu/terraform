@@ -4,21 +4,6 @@
 //  public_key = "/~/.aws/credentials/id_rsa.pub"
 //}
 
-//Launch backend instance from sh file
-data "aws_ami" "launch_configuration_ami" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
 
 data "template_file" "backend" {
   template = file("files/backend-deploy-data.sh")
@@ -36,7 +21,7 @@ resource "aws_launch_template" "launch-backend" {
 
   instance_type = "t2.micro"
 
-  image_id = data.aws_ami.launch_configuration_ami.id
+  image_id = "ami-0ed961fa828560210"
 
   instance_initiated_shutdown_behavior = "terminate"
 

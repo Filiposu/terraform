@@ -27,7 +27,7 @@ cd /src/my-frontend-app
 ssh-keyscan github.com >> /root/.ssh/known_hosts
 git clone git@github.com:Filiposu/terraform.git
 
-cd frontend
+cd terraform/frontend
 
 docker build -t my-frontend-app:v1.0.0 .
 docker run -di -e PHONEBOOK_API=${backend_url}  --name  my-frontend-app -p 80:80  my-frontend-app:v1.0.0
