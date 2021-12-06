@@ -21,6 +21,10 @@ resource "aws_launch_template" "launch-backend" {
 
   instance_type = "t2.micro"
 
+  instance_market_options {
+    market_type = "spot"
+  }
+
   image_id = "ami-0ed961fa828560210"
 
   instance_initiated_shutdown_behavior = "terminate"

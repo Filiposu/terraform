@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "autoscaling-group-backend" {
 }
 
 resource "aws_autoscaling_policy" "scale_app1" {
-  name        = "requests_count_scaling_policy"
+  name        = "requests_count_scaling_policy1"
   policy_type = "TargetTrackingScaling"
 
   autoscaling_group_name = aws_autoscaling_group.autoscaling-group-backend.name

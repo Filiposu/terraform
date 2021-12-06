@@ -14,9 +14,9 @@ spring:
         enabled: true
     baggage-keys: principal
   datasource:
-    url: ${MYSQL_URL:jdbc:mysql://phonebookdb.cstgoqlxr3e3.eu-west-1.rds.amazonaws.com:3306/testDB}
-    username: ${MYSQL_USER:example}
-    password: ${MYSQL_PASSWORD:example}
+    url: ${MYSQL_URL:jdbc:mysql://phonebookdb.cstgoqlxr3e3.eu-west-1.rds.amazonaws.com:3306/phonebookdb}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:password}
     #    tomcat:
     #      test-while-idle: true
     #      validation-query: 1

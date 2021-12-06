@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "autoscaling-group-frontend" {
 }
 
 resource "aws_autoscaling_policy" "scale_app2" {
-  name        = "requests_count_scaling_policy"
+  name        = "requests_count_scaling_policy2"
   policy_type = "TargetTrackingScaling"
 
   autoscaling_group_name = aws_autoscaling_group.autoscaling-group-frontend.name
