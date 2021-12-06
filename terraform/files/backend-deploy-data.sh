@@ -59,7 +59,5 @@ git clone git@github.com:Filiposu/terraform.git
 
 cd terraform/backend
 
-echo ${msql_url} > mysql.txt
-
 docker build -t my-backend-app:v1.0.0 .
 docker run -di -e MYSQL_URL=${msql_url} -e MYSQL_USERNAME=${msql_username} -e MYSQL_PASSWORD=${msql_password} --name my-backend-app -p 80:80 my-backend-app:v1.0.0

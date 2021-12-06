@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+<h1 th:utext="${hostname}"></h1>
+<p>[(${hostname})]</p>
+
 	<h1>Form</h1>
     <form action="#" th:action="@{/user/add}" th:object="${userEntity}" method="post">
     	<p>Phone: <input type="text" th:field="*{phone}" /></p>
