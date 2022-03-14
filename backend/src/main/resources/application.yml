@@ -14,7 +14,7 @@ spring:
         enabled: true
     baggage-keys: principal
   datasource:
-    url: jdbc:mysql://${MYSQL_SERVICE}:3306/phonebookdb
+    url: jdbc:mysql://${mysql}:3306/mysql
     username: ${MYSQL_USERNAME:root}
     password: ${MYSQL_PASSWORD:password}
     #    tomcat:
