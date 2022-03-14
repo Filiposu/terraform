@@ -16,8 +16,6 @@ spec:
         - name: frontend-app
           image: ${REPOSITORY_TAG}
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: production-microservice
             - name: BACKEND
               value: backend-app-service
           imagePullPolicy: Never

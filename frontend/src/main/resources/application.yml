@@ -7,7 +7,6 @@ spring:
     name: /phonebook-frontend
   main:
     banner-mode: off
-
 feign:
   client:
     config:
@@ -22,7 +21,7 @@ feign:
   okhttp:
     enabled: true
 endpoints:
-  phonebook-api: ${BACKEND}/phonebook-backend
+  phonebook-api: ${BACKEND}
 
 management:
   server:

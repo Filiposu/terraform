@@ -16,8 +16,6 @@ spec:
         - name: backend-app
           image: ${REPOSITORY_TAG}
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: production-microservice
             - name: mysql
               value: mysql
 
