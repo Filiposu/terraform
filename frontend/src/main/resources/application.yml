@@ -3,8 +3,6 @@ server:
   error:
     include-stacktrace: always
 spring:
-  application:
-    name: /phonebook-frontend
   main:
     banner-mode: off
 feign:
@@ -21,7 +19,7 @@ feign:
   okhttp:
     enabled: true
 endpoints:
-  phonebook-api: ${BACKEND}
+  phonebook-api: ${BACKEND}:8080
 
 management:
   server:
