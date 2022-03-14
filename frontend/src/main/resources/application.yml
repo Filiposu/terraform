@@ -22,7 +22,7 @@ feign:
   okhttp:
     enabled: true
 endpoints:
-  phonebook-api: ${BACKEND:http://localhost:8080}
+  phonebook-api: ${BACKEND}/phonebook-backend
 
 management:
   server:
