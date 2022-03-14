@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
   error:
     include-stacktrace: always
 spring:
@@ -22,7 +22,7 @@ feign:
   okhttp:
     enabled: true
 endpoints:
-  phonebook-api: ${BACKEND:http://localhost:80}
+  phonebook-api: ${BACKEND:http://localhost:8080}
 
 management:
   server:
