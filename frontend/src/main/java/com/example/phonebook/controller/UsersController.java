@@ -1,10 +1,11 @@
-package com.example.phonebook;
+package com.example.phonebook.controller;
 
 import com.example.phonebook.client.PhonebookClient;
 import com.example.phonebook.dto.UserEntity;
 import com.example.phonebook.dto.UserOperation;
 
 import java.net.Inet4Address;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,31 +25,17 @@ public class UsersController {
 
 	@GetMapping("/")
 	public String listUsers(Model model) {
-		List<UserEntity> users = phonebookClient.getAllUsers("myapp.example.com");
-		try{
+		List<UserEntity> users = new ArrayList<>();
+		try {
+			users = phonebookClient.getAllUsers("myapp.example.com");
 			model.addAttribute("hostname",Inet4Address.getLocalHost().getHostName());
-		}
-		catch (Exception e){
-			System.out.println(e.getMessage());
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 		model.addAttribute("users", users);
 		model.addAttribute("userEntity",new UserEntity());
 		return "user.html";
 	}
-
-//	@GetMapping("/status")
-//	public String getStatus(Model model) {
-//		List<UserEntity> users = phonebookClient.getStatus("myapp.example.com");
-//		try{
-//			model.addAttribute("hostname",Inet4Address.getLocalHost().getHostName());
-//		}
-//		catch (Exception e){
-//			System.out.println(e.getMessage());
-//		}
-//		model.addAttribute("users", users);
-//		model.addAttribute("userEntity",new UserEntity());
-//		return "user.html";
-//	}
 
 	@PostMapping("/user/add")
 	public String addUser(@ModelAttribute UserEntity userEntity, Model model) {
