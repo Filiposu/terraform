@@ -25,7 +25,6 @@ public class StatusController {
 
 	@GetMapping("/status")
 	public String listUsers(Model model) {
-		phonebookClient.getStatus("myapp.example.com");
 		return "ok";
 	}
 

@@ -23,7 +23,7 @@ spring:
   jpa:
     properties:
       hibernate:
-        default_schema: ${SCHEMA:phonebookdb}
+        default_schema: ${SCHEMA:mysql}
     hibernate:
       ddl-auto: update
 #      naming:
