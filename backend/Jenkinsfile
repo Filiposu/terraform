@@ -10,17 +10,6 @@ pipeline {
 	}
     
     stages {
-        stage('Make some actions depending on ENV') {
-            steps {
-                script {
-                    if (params.ENV == "TEST") {
-                        sh 'echo "This id TEST env"'
-                    } elif (params.ENV == "PROD") {
-                        sh 'echo "This id PROD env"'
-                    }
-                }
-            }
-        }
         stage('Build docker image') {
             steps {
                 sh 'docker build --file backend/Dockerfile -t ${REPOSITORY_TAG} backend/'
