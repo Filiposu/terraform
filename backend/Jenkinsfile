@@ -3,8 +3,6 @@ pipeline {
     
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-		YOUR_DOCKERHUB_USERNAME=filibuster
-        YOUR_DOCKERHUB_PASSWORD=41yASA
         SERVICE_NAME = "backend-app-service"
         REPOSITORY_TAG="${YOUR_DOCKERHUB_USERNAME}/${SERVICE_NAME}:${BUILD_ID}"
 	}
