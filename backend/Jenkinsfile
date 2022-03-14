@@ -2,7 +2,8 @@ pipeline {
     agent any
     
     environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+		DOCKERHUB_CREDENTIALS=credentials('docker-cred')
+		YOUR_DOCKERHUB_USERNAME="filibuster"
         SERVICE_NAME = "backend-app-service"
         REPOSITORY_TAG="${YOUR_DOCKERHUB_USERNAME}/${SERVICE_NAME}:${BUILD_ID}"
 	}
@@ -25,7 +26,7 @@ pipeline {
         }
          stage('Deploy to Cluster') {
           steps {
-                    sh 'envsubst < ${WORKSPACE}/backend/deploy.yaml | kubectl apply -f -'
+                sh 'envsubst < ${WORKSPACE}/backend/deploy.yaml | kubectl apply -f -'
             }
         }
     }
