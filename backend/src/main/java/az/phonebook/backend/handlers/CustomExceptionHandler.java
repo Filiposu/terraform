@@ -1,6 +1,6 @@
 package az.phonebook.backend.handlers;
 
-import az.phonebook.backend.dto.feign.response.ErrorResponseDto;
+import az.phonebook.backend.dto.ErrorResponseDto;
 import az.phonebook.backend.exceptions.AuthorizationException;
 import az.phonebook.backend.exceptions.FailedToGetSuccessfulResponseException;
 import az.phonebook.backend.exceptions.RecordNotFoundException;
@@ -104,7 +104,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                 .message(message)
                 .errorDetail(ex.getMessage())
                 .path(((ServletWebRequest) request).getRequest().getRequestURI())
-                .timestamp(LocalDateTime.now())
+                .timestamp(LocalDateTime.now().toString())
                 .build();
 
         return new ResponseEntity<>(errorResponseDto, status);

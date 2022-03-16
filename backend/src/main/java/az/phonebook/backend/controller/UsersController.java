@@ -1,16 +1,14 @@
 package az.phonebook.backend.controller;
 
 
-import az.phonebook.backend.dto.response.UserOperation;
+import az.phonebook.backend.dto.UserOperation;
 import az.phonebook.backend.entity.UserEntity;
 import az.phonebook.backend.service.UserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,12 +38,12 @@ public class UsersController {
     }
 
     @PutMapping("/user/edit")
-    public ResponseEntity<UserOperation> editUser (@RequestBody UserEntity user) {
+    public ResponseEntity<UserOperation> editUser(@RequestBody UserEntity user) {
         return ResponseEntity.ok(userService.editUser(user));
     }
 
     @DeleteMapping("/user/delete")
-    public ResponseEntity<UserOperation> deleteUser (@RequestBody UserEntity user) {
+    public ResponseEntity<UserOperation> deleteUser(@RequestBody UserEntity user) {
         return ResponseEntity.ok(userService.deleteUser(user));
     }
 

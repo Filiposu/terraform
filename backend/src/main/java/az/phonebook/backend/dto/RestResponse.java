@@ -1,4 +1,4 @@
-package az.phonebook.backend.dto.shared;
+package az.phonebook.backend.dto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

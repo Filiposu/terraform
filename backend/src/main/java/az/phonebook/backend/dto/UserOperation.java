@@ -1,4 +1,4 @@
-package az.phonebook.backend.dto.response;
+package az.phonebook.backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
