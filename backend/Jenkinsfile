@@ -18,11 +18,14 @@ pipeline {
                 sh "./gradlew test"
             }
         }
-            
-        withSonarQubeEnv('Sonarqube') {
+        
+        stage('Sonarqube') {
+            steps {
+               withSonarQubeEnv('Sonarqube') {
                     sh './gradlew --info sonarqube -Dsonar.host.url=sonarqube-service:9000 -Dsonar.projectKey=$MS_NAME -Dsonar.projectName=$MS_NAME -Dsonar.java.binaries=./ --debug --stacktrace'
+                 }
+            }
         }
-    
         stage('Build docker image') {
             steps {
                 sh 'docker build --file backend/Dockerfile -t ${REPOSITORY_TAG} backend/'
