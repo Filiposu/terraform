@@ -6,9 +6,23 @@ pipeline {
 		YOUR_DOCKERHUB_USERNAME="filibuster"
         SERVICE_NAME = "backend-app-service"
         REPOSITORY_TAG="${YOUR_DOCKERHUB_USERNAME}/${SERVICE_NAME}:${BUILD_ID}"
+        MS_NAME="phonebook-backend"
 	}
     
     stages {
+        stage('Build & tests ') {
+            steps {
+                echo 'Building..'
+                sh "./gradlew build "
+				echo 'Start unit testing with gradle...'
+                sh "./gradlew test"
+            }
+        }
+            
+        withSonarQubeEnv('Sonarqube') {
+                    sh './gradlew --info sonarqube -Dsonar.host.url=sonarqube-service:9000 -Dsonar.projectKey=$MS_NAME -Dsonar.projectName=$MS_NAME -Dsonar.java.binaries=./ --debug --stacktrace'
+        }
+    
         stage('Build docker image') {
             steps {
                 sh 'docker build --file backend/Dockerfile -t ${REPOSITORY_TAG} backend/'
