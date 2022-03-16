@@ -1,10 +1,8 @@
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
     }
 }
-
 
 plugins {
     id 'org.springframework.boot' version "$springBootVersion"
@@ -14,12 +12,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'az.ibar.ms'
-
-repositories {
-    mavenCentral()
-}
-
+group = 'az.phonebook'
 version = "$projectVersion"
 sourceCompatibility = "$sourceCompatibility"
 
@@ -29,9 +22,8 @@ configurations {
     }
 }
 
-compileJava {
-    options.compilerArgs += "-Amapstruct.defaultComponentModel=spring"
-    options.compilerArgs += "-Amapstruct.unmappedTargetPolicy=ERROR"
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -42,7 +34,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation:$validationVersion"
     implementation "net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion"
     implementation 'ch.qos.logback:logback-classic'
-    // Lib for creating mapper classes at compile time
     implementation 'org.jetbrains:annotations:19.0.0'
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: "$jaxbVersion"
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
@@ -56,6 +47,8 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
 
@@ -89,6 +82,12 @@ sonarqube {
     }
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${releaseTrainVersion}"
+    }
+}
+
 test {
     useJUnitPlatform()
 }
@@ -105,7 +104,24 @@ jacocoTestReport {
     }
 }
 
-// Configure the spring boot jar
+sonarqube {
+    properties {
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
+        property "sonar.junit.reportsPath", "build/test-results/test"
+        property 'sonar.coverage.jacoco.xmlReportPaths', '${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml'
+        property "sonar.projectKey", rootProject.name
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.scm.forceReloadAll", "true"
+        property "sonar.login", "f7b5b29f35fd1928967409aa0db48ccb4bd29129"
+        property 'sonar.coverage.exclusions',
+                "**/com/junit/homework/controller/*," +
+                        "**/com/junit/homework/*," +
+                        "**/com/junit/homework/domain/**," +
+                        "**/com/junit/homework/repos/*,"
+    }
+}
+
 springBoot {
     buildInfo()
 }
