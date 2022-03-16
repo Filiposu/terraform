@@ -14,7 +14,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh "./backend/gradlew build --no-daemon"
-                sh "./backend/gradlew tasks "
+                sh "./backend/gradlew tasks"
+                sh "ls backend/"
 				echo 'Start unit testing with gradle...'
                 sh "./backend/gradlew test"
             }
