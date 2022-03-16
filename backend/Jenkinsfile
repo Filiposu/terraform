@@ -13,7 +13,7 @@ pipeline {
         stage('Build & tests ') {
             steps {
                 echo 'Building..'
-                sh "./gradlew build "
+                sh "./backend/gradlew build "
 				echo 'Start unit testing with gradle...'
                 sh "./gradlew test"
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Sonarqube') {
             steps {
                withSonarQubeEnv('Sonarqube') {
-                    sh './gradlew --info sonarqube -Dsonar.host.url=sonarqube-service:9000 -Dsonar.projectKey=$MS_NAME -Dsonar.projectName=$MS_NAME -Dsonar.java.binaries=./ --debug --stacktrace'
+                    sh './backend/gradlew --info sonarqube -Dsonar.host.url=sonarqube-service:9000 -Dsonar.projectKey=$MS_NAME -Dsonar.projectName=$MS_NAME -Dsonar.java.binaries=./ --debug --stacktrace'
                  }
             }
         }
