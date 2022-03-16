@@ -15,7 +15,7 @@ pipeline {
                 echo 'Building..'
                 sh "./backend/gradlew build "
 				echo 'Start unit testing with gradle...'
-                sh "./gradlew test"
+                sh "./backend/gradlew test"
             }
         }
         
