@@ -58,7 +58,6 @@ dependencies {
     }
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
-    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: "$powerMockVersion"
 
 }
 
