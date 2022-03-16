@@ -1,4 +1,4 @@
-package com.example.phonebook;
+package com.example.phonebook.controller;
 
 import com.example.phonebook.client.PhonebookClient;
 import com.example.phonebook.dto.UserEntity;
