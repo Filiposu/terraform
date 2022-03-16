@@ -13,7 +13,8 @@ pipeline {
         stage('Build & tests ') {
             steps {
                 echo 'Building..'
-                sh "./backend/gradlew build "
+                sh "./backend/gradlew build --no-daemon"
+                sh "./backend/gradlew tasks "
 				echo 'Start unit testing with gradle...'
                 sh "./backend/gradlew test"
             }
